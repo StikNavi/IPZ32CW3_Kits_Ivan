@@ -3,8 +3,6 @@ package ua.edu.lntu.cw3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,10 +10,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,12 +30,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecipeApp() {
     Surface(color = Color.Yellow) {
-        LazyColumn {
-            items(recipeList) { recipe ->
-                RecipeItem(recipe = recipe)
+        Column {
+            TopAppBar(
+                title = { Text("Recipe App") },
+            )
+            LazyColumn {
+                items(recipeList) { recipe ->
+                    RecipeItem(recipe = recipe)
+                }
             }
         }
     }
@@ -80,7 +82,6 @@ fun RecipeItem(recipe: Recipe) {
         }
     }
 }
-
 
 data class Recipe(val name: String, val description: String, val imageResId: Int)
 
