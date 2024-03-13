@@ -14,7 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.BlendMode.Companion.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun RecipeApp() {
-    Surface(color = MaterialTheme.colorScheme.background) {
+    Surface(color = androidx.compose.ui.graphics.Color.Companion.Yellow) {
         LazyColumn {
             items(recipeList) { recipe ->
                 RecipeItem(recipe = recipe)
