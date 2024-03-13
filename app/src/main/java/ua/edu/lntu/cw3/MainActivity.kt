@@ -14,7 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Color
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun RecipeApp() {
-    Surface(color = androidx.compose.ui.graphics.Color.Companion.Yellow) {
+    Surface(color = Color.Yellow) {
         LazyColumn {
             items(recipeList) { recipe ->
                 RecipeItem(recipe = recipe)
@@ -47,46 +47,28 @@ fun RecipeApp() {
 @Composable
 fun RecipeItem(recipe: Recipe) {
     var expanded by remember { mutableStateOf(false) }
-    val rotationDegrees by remember { mutableStateOf(Animatable(initialValue = 0f)) }
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                painter = painterResource(id = recipe.imageResId),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(64.dp)
-                    .graphicsLayer(rotationZ = rotationDegrees.value),
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                text = recipe.name,
-                modifier = Modifier.padding(start = 16.dp)
-            )
-        }
+        Image(
+            painter = painterResource(id = recipe.imageResId),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .clickable { expanded = !expanded },
+            contentScale = ContentScale.Crop
+        )
+
         Spacer(modifier = Modifier.height(8.dp))
+
         if (expanded) {
             Text(
                 text = recipe.description,
-                modifier = Modifier.padding(start = 80.dp)
-            )
-        }
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { expanded = !expanded }
-            .padding(horizontal = 16.dp)
-    ) {
-        LaunchedEffect(expanded) {
-            rotationDegrees.animateTo(
-                targetValue = if (expanded) 180f else 0f,
-                animationSpec = tween(durationMillis = 300)
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
     }
