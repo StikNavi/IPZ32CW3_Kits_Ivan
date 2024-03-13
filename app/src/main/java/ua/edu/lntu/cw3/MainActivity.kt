@@ -95,8 +95,16 @@ fun RecipeItem(recipe: Recipe) {
 data class Recipe(val name: String, val description: String, val imageResId: Int)
 
 val recipeList = listOf(
-    Recipe("Recipe 1", "Description for recipe 1", R.drawable.recipe1),
-
+    Recipe("Recipe 1", "Description for recipe 1", R.drawable.study),
+    Recipe("Recipe 2", "Description for recipe 2", R.drawable.study),
+    Recipe("Recipe 3", "Description for recipe 3", R.drawable.study),
+    Recipe("Recipe 4", "Description for recipe 4", R.drawable.study),
+    Recipe("Recipe 5", "Description for recipe 5", R.drawable.study),
+    Recipe("Recipe 6", "Description for recipe 6", R.drawable.study),
+    Recipe("Recipe 7", "Description for recipe 7", R.drawable.study),
+    Recipe("Recipe 8", "Description for recipe 8", R.drawable.study),
+    Recipe("Recipe 9", "Description for recipe 9", R.drawable.study),
+    Recipe("Recipe 10", "Description for recipe 10", R.drawable.study)
 )
 
 @Preview(showBackground = true)
