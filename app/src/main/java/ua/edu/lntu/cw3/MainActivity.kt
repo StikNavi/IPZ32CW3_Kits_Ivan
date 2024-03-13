@@ -65,6 +65,11 @@ fun RecipeItem(recipe: Recipe) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        Text(
+            text = recipe.name,
+            modifier = Modifier.padding(horizontal = 120.dp)
+        )
+
         if (expanded) {
             Text(
                 text = recipe.description,
